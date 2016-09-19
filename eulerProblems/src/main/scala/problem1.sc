@@ -9,16 +9,17 @@ def magicSum(num: Int): Int = {
 }
 val result = magicSum(3) + magicSum(5)
 
-// Using map and filter and reduce
+// Using map and filter and sum
 def magicSum2(num: Int, threshold: Int): Int = {
-  (1 to threshold) map(mult => mult * num) filter(sum => sum < threshold) reduce(_ + _)
+  (1 to threshold).map(mult => mult * num).
+    filter(sum => sum < threshold).sum
 }
 magicSum2(3, 1000) + magicSum2(5, 1000)
 
 // Using map, withFilter, map and reduce
 def magicSum3(num: Int, threshold: Int): Int = {
-  (1 to threshold) map(mult => mult * num) withFilter(x => x < threshold) map(y => y) reduce(_ + _)
+  (1 to threshold).map(mult => mult * num).
+    withFilter(x => x < threshold) map(y => y) reduce(_ + _)
 }
 magicSum3(3, 1000) + magicSum3(5, 1000)
-
 
